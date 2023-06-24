@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,6 +30,6 @@ public class ProjectConfig {
         encoders.put("bcrypt", new BCryptPasswordEncoder());
         encoders.put("scrypt", SCryptPasswordEncoder.defaultsForSpringSecurity_v5_8());
 
-        return new DelegatingPasswordEncoder("bcrypt", encoders);
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 }
