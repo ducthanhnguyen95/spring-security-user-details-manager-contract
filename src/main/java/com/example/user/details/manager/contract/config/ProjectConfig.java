@@ -24,12 +24,6 @@ public class ProjectConfig {
     }
     @Bean
     public PasswordEncoder passwordEncoder() {
-        Map<String, PasswordEncoder> encoders = new HashMap<>();
-
-        encoders.put("noop", NoOpPasswordEncoder.getInstance());
-        encoders.put("bcrypt", new BCryptPasswordEncoder());
-        encoders.put("scrypt", SCryptPasswordEncoder.defaultsForSpringSecurity_v5_8());
-
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 }
